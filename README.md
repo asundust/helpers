@@ -1,5 +1,7 @@
 # Laravel Helpers
 
+![StyleCI build status](https://github.styleci.io/repos/335536466/shield) 
+
 <a href="https://packagist.org/packages/asundust/helpers"><img src="https://img.shields.io/packagist/dt/asundust/helpers" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/asundust/helpers"><img src="https://img.shields.io/packagist/v/asundust/helpers" alt="Latest Stable Version"></a>
 
