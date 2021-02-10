@@ -3,41 +3,40 @@
 if (!function_exists('da')) {
     /**
      * dd打印封装 不断点
-     * 如果能转成toArray()则转成数组
+     * 如果能转成toArray()则转成数组.
      *
      * @param mixed $args
      */
     function da(...$args)
     {
-        $varDumper = new Symfony\Component\VarDumper\VarDumper;
+        $varDumper = new Symfony\Component\VarDumper\VarDumper();
         foreach ($args as $x) {
             if (method_exists($x, 'toArray')) {
                 $x = $x->toArray();
             }
             $varDumper->dump($x);
         }
-
     }
 }
 
 if (!function_exists('dad')) {
     /**
      * dd打印封装 并断点
-     * 如果能转成toArray()则转成数组
+     * 如果能转成toArray()则转成数组.
      *
      * @param mixed $args
      */
     function dad(...$args)
     {
         da(...$args);
-        die(1);
+        exit(1);
     }
 }
 
 if (!function_exists('ma')) {
     /**
      * 移动版dd打印封装 不断点
-     * 如果能转成toArray()则转成数组
+     * 如果能转成toArray()则转成数组.
      *
      * @param mixed $args
      */
@@ -51,20 +50,20 @@ if (!function_exists('ma')) {
 if (!function_exists('mad')) {
     /**
      * 移动版dd打印封装 并断点
-     * 如果能转成toArray()则转成数组
+     * 如果能转成toArray()则转成数组.
      *
      * @param mixed $args
      */
     function mad(...$args)
     {
         ma(...$args);
-        die(1);
+        exit(1);
     }
 }
 
 if (!function_exists('money_show')) {
     /**
-     * 金额格式化
+     * 金额格式化.
      *
      * @param int|string $money  金额数
      * @param int        $number 小数位数
@@ -73,16 +72,17 @@ if (!function_exists('money_show')) {
      */
     function money_show($money, $number = 2)
     {
-        if ($money == null || $money == '') {
+        if (null == $money || '' == $money) {
             return '0.00';
         }
-        return sprintf('%01.' . $number . 'f', $money);
+
+        return sprintf('%01.'.$number.'f', $money);
     }
 }
 
 if (!function_exists('pluck_to_array')) {
     /**
-     * [$id$ => $value$, ...] 转成 [['id' => $id$, 'value' => $value$], ...] 方法
+     * [$id$ => $value$, ...] 转成 [['id' => $id$, 'value' => $value$], ...] 方法.
      *
      * @param        $array
      * @param string $value
@@ -102,6 +102,7 @@ if (!function_exists('pluck_to_array')) {
                 $value => $v,
             ];
         }
+
         return $data;
     }
 }
@@ -112,8 +113,8 @@ if (!function_exists('ql')) {
      */
     function ql($message)
     {
-        $handle = fopen(storage_path('logs/log-' . now()->toDateString() . '.log'), 'a');
-        fwrite($handle, $message . "\n");
+        $handle = fopen(storage_path('logs/log-'.now()->toDateString().'.log'), 'a');
+        fwrite($handle, $message."\n");
         fclose($handle);
     }
 }
