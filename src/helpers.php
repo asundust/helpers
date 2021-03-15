@@ -67,8 +67,6 @@ if (!function_exists('money_show')) {
      *
      * @param mixed $money  金额数
      * @param int   $number 小数位数
-     *
-     * @return string
      */
     function money_show($money, $number = 2): string
     {
@@ -87,8 +85,6 @@ if (!function_exists('pluck_to_array')) {
      * @param        $array
      * @param string $value
      * @param string $key
-     *
-     * @return array
      */
     function pluck_to_array($array, $value = 'value', $key = 'id'): array
     {
@@ -116,18 +112,18 @@ if (!function_exists('ql')) {
     function ql($message, $path = '', $name = 'log')
     {
         if ($path) {
-            $path = trim($path, '/') . '/';
-            create_dir(storage_path('logs/' . $path));
+            $path = trim($path, '/').'/';
+            create_dir(storage_path('logs/'.$path));
         }
-        $handle = fopen(storage_path('logs/' . $path . $name . '-' . date('Y-m-d') . '.log'), 'a');
-        fwrite($handle, $message . "\n");
+        $handle = fopen(storage_path('logs/'.$path.$name.'-'.date('Y-m-d').'.log'), 'a');
+        fwrite($handle, $message."\n");
         fclose($handle);
     }
 }
 
 if (!function_exists('create_dir')) {
     /**
-     * 功能：循环检测并创建文件夹
+     * 功能：循环检测并创建文件夹.
      *
      * @param string $path 文件夹路径
      */
