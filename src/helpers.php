@@ -65,12 +65,12 @@ if (!function_exists('money_show')) {
     /**
      * 金额格式化.
      *
-     * @param int|string $money  金额数
-     * @param int        $number 小数位数
+     * @param mixed $money  金额数
+     * @param int   $number 小数位数
      *
      * @return string
      */
-    function money_show($money, $number = 2)
+    function money_show($money, $number = 2): string
     {
         if (null == $money || '' == $money) {
             return '0.00';
@@ -90,7 +90,7 @@ if (!function_exists('pluck_to_array')) {
      *
      * @return array
      */
-    function pluck_to_array($array, $value = 'value', $key = 'id')
+    function pluck_to_array($array, $value = 'value', $key = 'id'): array
     {
         if (method_exists($array, 'toArray')) {
             $array = $array->toArray();
@@ -109,13 +109,34 @@ if (!function_exists('pluck_to_array')) {
 
 if (!function_exists('ql')) {
     /**
-     * @param $message
+     * @param        $message
+     * @param string $path
+     * @param string $name
      */
-    function ql($message)
+    function ql($message, $path = '', $name = 'log')
     {
-        $handle = fopen(storage_path('logs/log-'.now()->toDateString().'.log'), 'a');
-        fwrite($handle, $message."\n");
+        if ($path) {
+            $path = trim($path, '/') . '/';
+            create_dir(storage_path('logs/' . $path));
+        }
+        $handle = fopen(storage_path('logs/' . $path . $name . '-' . date('Y-m-d') . '.log'), 'a');
+        fwrite($handle, $message . "\n");
         fclose($handle);
+    }
+}
+
+if (!function_exists('create_dir')) {
+    /**
+     * 功能：循环检测并创建文件夹
+     *
+     * @param string $path 文件夹路径
+     */
+    function create_dir(string $path)
+    {
+        if (!file_exists($path)) {
+            create_dir(dirname($path));
+            mkdir($path);
+        }
     }
 }
 
