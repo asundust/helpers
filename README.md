@@ -1,6 +1,6 @@
 # 更新包名停止维护声明
 - 此仓库由于更新包名不再维护
-- 新包github地址 [https://github.com/asundust/helpers](https://github.com/asundust/helpers)
+- 新包github地址 [https://github.com/asundust/laravel-helpers](https://github.com/asundust/laravel-helpers)
 - 新包packagist地址 [https://packagist.org/packages/asundust/laravel-helpers](https://packagist.org/packages/asundust/laravel-helpers)
 
 # Laravel Helpers
